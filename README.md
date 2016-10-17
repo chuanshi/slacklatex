@@ -23,6 +23,21 @@ On a Ubuntu server, you can install all of these with the following command:
 sudo apt-get install python3-flask python3-requests texlive imagemagick
 ```
 
+### Optional: with Docker
+
+Clone the repository, copy the `config.ini` and complete it as described 
+below. Then, build the docker image:
+
+```bash
+docker build -t slacklatex .
+```
+
+And run it with port 5000 (or whatever port you like) exposed:
+
+```bash
+docker run -d -p 5000:5000 slacklatex
+```
+
 ## Configuring slack-latex
 
 `slack-latex` requires a Slack API token (for uploading/posting the rendered formulae).
