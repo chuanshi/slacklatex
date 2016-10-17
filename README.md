@@ -25,7 +25,8 @@ sudo apt-get install python3-flask python3-requests texlive imagemagick
 
 ### Optional: with Docker
 
-First, copy the `config.ini` and complete it as described below. Then, build the docker image:
+Clone the repository, copy the `config.ini` and complete it as described 
+below. Then, build the docker image:
 
 ```bash
 docker build -t slacklatex .
