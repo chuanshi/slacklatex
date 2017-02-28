@@ -29,12 +29,15 @@ sudo apt-get install python3-flask python3-requests texlive imagemagick
 It also expects you to provide a Slack slash command verification token, which allows
 the server to verify that requests indeed came from Slack.
 
-### Create a config file for slack-latex
+### Setup directories and files
 
-Start by copying the example config file:
+Start by copying files to new places:
 
 ```bash
-cp config.ini.example config.ini
+sudo cp slacklatex.py /usr/local/bin/
+sudo cp config.ini.example /usr/local/etc/config.ini
+sudo cp slacklatex.service /lib/systemd/system/
+sudo mkdir -p /srv/slacklatex/
 ```
 
 ### Create a bot user for your organization
@@ -57,12 +60,17 @@ port matches the one in `main.py`.
 Copy the verification token from Integration Settings -> Token into
 `config.ini` as the `slash_command_verification_token` value.
 
-### Launch the server
+### Daemonize your slack LaTeX bot
 
-Start up your server:
+Don't forget to register and enable the slacklatex service with systemd!
 
 ```bash
-python3 main.py
+sudo systemctl daemon-reload
+sudo systemctl enable slacklatex.service
 ```
 
-Then, try testing out your shiny new slash command.
+### Start your bot!
+
+```bash
+sudo systemctl start slacklatex.service
+```
