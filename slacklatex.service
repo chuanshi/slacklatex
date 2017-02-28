@@ -1,0 +1,11 @@
+[Unit]
+Description=Slack LaTeX bot 
+After=multi-user.target
+
+[Service]
+Type=simple
+ExecStart=/bin/bash -c 'PATH=/usr/local/texlive/2016/bin/x86_64-linux:$PATH /usr/bin/python3.6 /usr/local/bin/slacklatex.py --config=/usr/local/etc/slacklatex.conf'
+WorkingDirectory=/srv/slacklatex
+
+[Install]
+antedBy=multi-user.target
